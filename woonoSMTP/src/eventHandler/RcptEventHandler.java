@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import server.TextWriter;
+
 public class RcptEventHandler implements EventHandler {
 	private static int DATA_SIZE = 1024;
 	private static String response = "250 OK\n";
@@ -20,6 +22,10 @@ public class RcptEventHandler implements EventHandler {
 			String data = new String(buffer);
 			System.out.println(data);
 			os.write(response.getBytes());
+			
+			TextWriter textWriter = TextWriter.getInstance();
+			textWriter.setRcpt(data);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
