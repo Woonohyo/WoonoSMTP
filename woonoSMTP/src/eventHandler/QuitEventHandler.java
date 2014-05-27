@@ -18,25 +18,24 @@ public class QuitEventHandler implements EventHandler {
 		System.out.println("Handling QUIT...");
 		try {
 			writeToFile();
-
 			socket.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	private void writeToFile() {
-		System.out.println("###Writing mail to txt file...###");
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
+		System.out.println("### Writing the mail to txt file ###");
+		String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss")
 				.format(Calendar.getInstance().getTime());
 		TextWriter textWriter = TextWriter.getInstance();
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(textWriter.getRcpt().replace("\n", "").substring(4));
+		sb.append(textWriter.getRcpt().replaceAll("(\r\n|\n)", "").substring(4));
 		sb.append(timeStamp);
 		sb.append(".txt");
 		String fileName = sb.toString();
+		System.out.println(fileName);
 
 		try {
 			File file = new File(fileName);

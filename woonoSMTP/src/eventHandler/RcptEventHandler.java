@@ -18,8 +18,9 @@ public class RcptEventHandler implements EventHandler {
 			InputStream is = socket.getInputStream();
 			OutputStream os = socket.getOutputStream();
 			byte[] buffer = new byte[DATA_SIZE];
-			is.read(buffer);
+			int rcptSize = is.read(buffer);
 			String data = new String(buffer);
+			data = data.substring(0, rcptSize);
 			System.out.println(data);
 			os.write(response.getBytes());
 			

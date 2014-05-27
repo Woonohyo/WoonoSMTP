@@ -63,8 +63,8 @@ public class SmtpClient {
 
 	public static void main(String args[]) {
 		try {
-			SmtpClient.sendMail("127.0.0.1", "sender",
-					"recipient", "MOBILE COMPUTING REPORT - IMPLEMENTING SMTP SERVER USING JAVA\n");
+			SmtpClient.sendMail("127.0.0.1", "Woonohyo",
+					"Stella", "MOBILE COMPUTING REPORT - IMPLEMENTING SMTP SERVER USING JAVA\n");
 			System.out.println("==========================");
 			System.out.println("메일이 전송되었습니다.");
 		} catch (Exception e) {

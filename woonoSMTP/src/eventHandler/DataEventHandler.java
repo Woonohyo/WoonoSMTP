@@ -20,8 +20,9 @@ public class DataEventHandler implements EventHandler {
 			OutputStream os = socket.getOutputStream();
 
 			byte[] buffer = new byte[DATA_SIZE];
-			is.read(buffer);
+			int dataSize = is.read(buffer);
 			String data = new String(buffer);
+			data.substring(0, dataSize);
 			os.write(DATAresponse.getBytes());
 
 			is.read(buffer);
